@@ -1,25 +1,19 @@
 # frozen_string_literal: true
 
-def stock_picker(prices)
-  length = prices.length
+def stock_picker2(prices)
+  max_i = [0, 1]
 
-  max_buy_index = 0
-  max_sell_index = 1
-  max_profit = prices[max_sell_index] - prices[max_buy_index]
+  prices.each_with_index do |buy_price, buy_i|
+    prices.each_with_index do |sell_price, sell_i|
+      next if sell_i <= buy_i
 
-  for buy_index in (0..(length - 2))
-    for sell_index in ((buy_index + 1)..(length - 1))
-      profit = prices[sell_index] - prices[buy_index]
-      if profit > max_profit
-        max_buy_index = buy_index
-        max_sell_index = sell_index
-        max_profit = profit
+      if (sell_price - buy_price) > prices[max_i[1]] - prices[max_i[0]]
+        max_i = [buy_i, sell_i]
       end
     end
   end
-  [max_buy_index, max_sell_index]
+  max_i
 end
 
 prices = [17, 3, 6, 9, 15, 8, 6, 1, 10]
-result = stock_picker(prices)
-p result
+p stock_picker2(prices)
