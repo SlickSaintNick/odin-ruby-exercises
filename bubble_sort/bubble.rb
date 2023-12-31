@@ -2,13 +2,11 @@
 
 def bubble_sort(array)
   arr_copy = array.map(&:clone)
-  arr_copy.length.times do
+  arr_copy.length.times do |i|
     swapped = false
-    arr_copy.each_with_index do |_value, i|
-      next if arr_copy[i + 1] == nil
-
-      if arr_copy[i] > arr_copy[i + 1]
-        arr_copy[i], arr_copy[i + 1] = arr_copy[i + 1], arr_copy[i]
+    for j in 0..(arr_copy.length - i - 2)
+      if arr_copy[j] > arr_copy[j + 1]
+        arr_copy[j], arr_copy[j + 1] = arr_copy[j + 1], arr_copy[j]
         swapped = true
       end
     end
