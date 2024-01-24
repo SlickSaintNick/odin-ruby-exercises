@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-def caesar_cipher(string, cipher)
+def caesar_cipher(string, cipher = 0)
   cipher_string = ''
   string.each_char do |char|
     cipher_ascii =
@@ -15,8 +15,3 @@ def caesar_cipher(string, cipher)
   end
   cipher_string
 end
-
-string = 'What a string!'
-cipher = 5
-
-puts caesar_cipher(string, cipher)
